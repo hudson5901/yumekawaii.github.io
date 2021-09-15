@@ -217,11 +217,41 @@
       }
       #content {
         z-index: 10;
-        width: 50%;
+        width: 70%;
         padding: 1em;
-        background: #284D53;
+        background: white;
         border-radius: 10px;
+        text-align: right;
       }
+      #content button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        appearance: none;
+        position: relative;
+  z-index: 2;
+  background-color: #fff;
+  border: 2px solid #333;
+  color: #333;
+  line-height: 48px;
+  width: 100%;
+  margin-top: 12px;
+      }
+      #content button::after {
+  top: 4px;
+  left: 4px;
+  width: 188px;
+  height: 42px;
+  border: 2px solid #333;
+  opacity: 0;
+}
+#content button::after {
+  opacity: 1;
+}
+
+
 
       #overlay {
         /*　要素を重ねた時の順番　*/
@@ -383,6 +413,114 @@
 
       
     </style>
+      <style>
+        .align-center {
+          text-align: center;
+       }
+        .row {
+          margin: -20px 0;
+       }
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+       }
+        .row .col {
+          padding: 0 20px;
+          float: left;
+          box-sizing: border-box;
+       }
+        .row .col.x-50 {
+          width: 50%;
+       }
+        .row .col.x-100 {
+          width: 100%;
+       }
+        .content-wrapper {
+          min-height: 100%;
+          position: relative;
+       }
+        .get-in-touch {
+          max-width: 650px;
+          margin: 0 auto;
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+       }
+        .get-in-touch .title {
+          text-align: center;
+          font-family: Raleway, sans-serif;
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          font-size: 36px;
+          line-height: 48px;
+          padding-bottom: 48px;
+       }
+        .contact-form .form-field {
+          position: relative;
+          margin: 32px 0;
+       }
+        .contact-form .input-text {
+          display: block;
+          width: 100%;
+          height: 36px;
+          border-width: 0 0 2px 0;
+          border-color: #000;
+          font-family: Lusitana, serif;
+          font-size: 18px;
+          line-height: 26px;
+          font-weight: 400;
+       }
+        .contact-form .input-text:focus {
+          outline: none;
+       }
+        .contact-form .input-text:focus + .label, .contact-form .input-text.not-empty + .label {
+          transform: translateY(-24px);
+       }
+        .contact-form .label {
+          position: absolute;
+          left: 20px;
+          bottom: 11px;
+          font-family: Lusitana, serif;
+          font-size: 18px;
+          line-height: 26px;
+          font-weight: 400;
+          color: #888;
+          cursor: text;
+          transition: transform 0.2s ease-in-out;
+       }
+        .contact-form .submit-btn {
+          display: inline-block;
+          background-color: #000;
+          color: #fff;
+          font-family: Raleway, sans-serif;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-size: 16px;
+          line-height: 24px;
+          padding: 8px 16px;
+          border: none;
+          cursor: pointer;
+       }
+        .note {
+          position: absolute;
+          left: 0;
+          bottom: 10px;
+          width: 100%;
+          text-align: center;
+          font-family: Lusitana, serif;
+          font-size: 16px;
+          line-height: 21px;
+       }
+        .note .link {
+          color: #888;
+          text-decoration: none;
+       }
+        .note .link:hover {
+          text-decoration: underline;
+       }
+        
+         </style>
   </head>
   <link rel="stylesheet" href="./css/a.css" />
 
@@ -436,7 +574,7 @@
               <a @click="click" class="cta" href="#"> Start </a>
             </div>
 
-            <!-- 説明動画１ -->
+            <!-- 導入１ -->
             <div class="base2" v-if="this.id == 2">
               <div class="video">
                 <iframe
@@ -454,20 +592,6 @@
               </div>
             </div>
 
-            <!-- マップ -->
-            <div class="base2" v-if="this.id == 5">
-              <div class="map">
-                <a @click="click">
-                  <span class="material-icons">house</span>
-                  <p>家</p>
-                </a>
-                <a @click="click">
-                  <span class="material-icons">school</span>
-                  <p>学校</p>
-                </a>
-              </div>
-            </div>
-
             <!-- 謎１ -->
             <div class="base2" v-if="this.id == 3">
               <img src="./img/謎step1.svg" alt="" />
@@ -477,13 +601,13 @@
                 autoplay
                 loop
               ></audio>
+              <!-- ヒント謎1 -->
               <button v-on:click="openModal">ヒントを見る</button>
               <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step1ヒント.svg" alt=""></open-modal>
-              <h1>答えを入力</h1>
-              <input v-model.lazy="input" placeholder="ひらがな"></input>
+              <input　v-model.lazy="input1"　id="message" class="input-text js-input" type="text" required>
             </div>
 
-            <!-- 正解画面１ -->
+            <!-- 正解画面謎1 -->
             <div class="base2" v-if="this.id == 4">
               <audio
                 src="./sound/異端審問.mp3"
@@ -498,15 +622,317 @@
               </div>
               </div>
               <div class="next">
-                <a @click="click" class="next-btn btn-border">MAPへ進む</a>
+                <a @click="click" class="map-btn btn-border">MAPを開く</a>
+              </div>
+            </div>
+
+            <!-- マップ -->
+            <div class="base2" v-if="this.id == 5">
+              <img src="./img/newmap-letter.png" alt="" />
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">学校に行く</a>
+              </div>
+            </div>
+
+            <!--　学校内 -->
+            <div class="base2" v-if="this.id == 6">
+              <p>ここは学校</p>
+              <img src="./img/school-map.png" alt="" />
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">給食室に行く</a>
+              </div>
+            </div>
+
+            <!-- 給食室導入 -->
+            <div class="base2" v-if="this.id == 7">
+              <p>ここは給食室</p>
+              <div class="video">
+                <iframe
+                  width="100%"
+                  height="500px"
+                  src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+                  frameborder="0"
+                  allow="accelerometer; autoplay;
+                  encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">次へ</a>
+              </div>
+            </div>
+
+            <!-- 給食室内 -->
+            <div class="base2" v-if="this.id == 8">
+              <p>ここは給食室</p>
+              <img src="./img/仮地図.svg" alt="" />
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">こんだて表を見る</a>
               </div>
             </div>
 
             <!-- 謎2 -->
-            <div class="base2" v-if="this.id == 6">
+            <div class="base2" v-if="this.id == 9">
               <img src="./img/謎step2.svg" alt="" />
-              <button @click="click">次へ</button>
-              <button @click="back">前へ</button>
+              <audio
+                src="./sound/迷いの森.mp3"
+                preload="metadata"
+                autoplay
+                loop
+              ></audio>
+              <!-- ヒント謎2 -->
+              <button v-on:click="openModal">ヒントを見る</button>
+              <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step2ヒント.svg" alt=""></open-modal>
+              <h1>答えを入力</h1>
+              <input v-model.lazy="input2" placeholder="ひらがな"></input>
+            </div>
+
+            <!-- 正解画面謎2 -->
+            <div class="base2" v-if="this.id == 10">
+              <audio
+                src="./sound/異端審問.mp3"
+                preload="metadata"
+                autoplay
+                loop
+              ></audio>
+              <div class="clear1">
+                <div>
+                <h1>正解！おめでとう</h1>
+                <h2>aaaa</h2>
+              </div>
+              </div>
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">給食室を出る</a>
+              </div>
+            </div>
+
+             <!-- マップ2 -->
+             <div class="base2" v-if="this.id == 11">
+              <img src="./img/newmap-letter.png" alt="" />
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">公園に行く</a>
+              </div>
+            </div>
+
+            <!-- 公園導入 -->
+            <div class="base2" v-if="this.id == 12">
+              <p>ここは公園</p>
+              <div class="video">
+                <iframe
+                  width="100%"
+                  height="500px"
+                  src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+                  frameborder="0"
+                  allow="accelerometer; autoplay;
+                  encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">次へ</a>
+              </div>
+            </div>
+
+             <!-- 謎3 -->
+             <div class="base2" v-if="this.id == 13">
+              <img src="./img/謎step3.svg" alt="" />
+              <audio
+                src="./sound/迷いの森.mp3"
+                preload="metadata"
+                autoplay
+                loop
+              ></audio>
+              <!-- ヒント謎1 -->
+              <button v-on:click="openModal">ヒントを見る</button>
+              <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step3ヒント.svg" alt=""></open-modal>
+              <h1>答えを入力</h1>
+              <input v-model.lazy="input3" placeholder="ひらがな"></input>
+            </div>
+
+            <!-- 正解画面謎3 -->
+            <div class="base2" v-if="this.id == 14">
+              <audio
+              src="./sound/異端審問.mp3"
+              preload="metadata"
+              autoplay
+              loop
+            ></audio>
+            <div class="clear1">
+              <div>
+              <h1>正解！おめでとう</h1>
+              <h2>すいどう</h2>
+            </div>
+            </div>
+            <div class="next">
+              <a @click="click" class="next-btn btn-border">公園に戻る</a>
+            </div>
+            </div>
+                         <!-- 公園内 -->
+                         <div class="base2" v-if="this.id == 15">
+                          <p>ここは公園</p>
+                          <img src="./img/仮地図.svg" alt="" />
+                          <div class="next">
+                            <a @click="click" class="next-btn btn-border">水道へ行く</a>
+                          </div>
+                        </div>
+
+            <!--　水道内 -->
+            <div class="base2" v-if="this.id == 16">
+              <h1>ここは水道</h1>
+              <p>近くに何かあるぞ！</p>
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">詳しく見る</a>
+              </div>
+            </div>
+
+            <!--　マップゲット -->
+            <div class="base2" v-if="this.id == 17">
+                <h1>地図の破片だ！</h1>
+                <div class="next">
+                  <a @click="click" class="next-btn btn-border">マップを修復する</a>
+                </div>
+            </div>
+
+            <!--　新マップ -->
+            <div class="base2" v-if="this.id == 18">
+              <img src="./img/newmap-letter.png" alt="" />
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">図書館へ行く</a>
+              </div>
+            </div>
+
+            <!--　図書館導入 -->
+            <div class="base2" v-if="this.id == 19">
+              <p>ここは図書館</p>
+              <div class="video">
+                <iframe
+                  width="100%"
+                  height="500px"
+                  src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+                  frameborder="0"
+                  allow="accelerometer; autoplay;
+                  encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">次へ</a>
+              </div>
+            </div>
+
+            <!--　図書館内 -->
+            <div class="base2" v-if="this.id == 20">
+              <p>ここは図書館</p>
+              <img src="./img/仮地図.svg" alt="" />
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">おじさんに話しかける</a>
+              </div>
+            </div>
+
+            <!--　謎4 -->
+            <div class="base2" v-if="this.id == 21">
+               <img src="./img/謎step4.svg" alt="" />
+              <audio
+                src="./sound/迷いの森.mp3"
+                preload="metadata"
+                autoplay
+                loop
+              ></audio>
+              <!-- ヒント謎4 -->
+              <button v-on:click="openModal">ヒントを見る</button>
+              <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step4ヒント.svg" alt=""></open-modal>
+              <h1>答えを入力</h1>
+              <input v-model.lazy="input4" placeholder="ひらがな"></input>
+            </div>
+
+            <!--　正解画面謎4 -->
+            <div class="base2" v-if="this.id == 22">
+              <audio
+              src="./sound/異端審問.mp3"
+              preload="metadata"
+              autoplay
+              loop
+            ></audio>
+            <div class="clear1">
+              <div>
+              <h1>正解！おめでとう</h1>
+              <h2>答えは、本</h2>
+            </div>
+            </div>
+            <div class="next">
+              <a @click="click" class="next-btn btn-border">図書館へ戻る</a>
+            </div>
+            </div>
+
+            <!--　本をもらう動画 -->
+            <div class="base2" v-if="this.id == 23">
+              <p>ここは図書館</p>
+              <div class="video">
+                <iframe
+                  width="100%"
+                  height="500px"
+                  src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+                  frameborder="0"
+                  allow="accelerometer; autoplay;
+                  encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">次へ</a>
+              </div>
+            </div>
+
+            <!--　謎5 -->
+            <div class="base2" v-if="this.id == 24">
+              <p>ここで謎５</p>
+              <a @click="click" class="next-btn btn-border">次へ</a>
+            </div>
+
+            <!--　正解画面謎5 -->
+            <div class="base2" v-if="this.id == 25">
+              <audio
+              src="./sound/異端審問.mp3"
+              preload="metadata"
+              autoplay
+              loop
+            ></audio>
+            <div class="clear1">
+              <div>
+              <h1>正解！おめでとう</h1>
+              <h2>答えは、？？？</h2>
+            </div>
+            </div>
+            <div class="next">
+              <a @click="click" class="next-btn btn-border">図書館を出る</a>
+            </div>
+            </div>
+
+            <!--　新ロケットマップ -->
+            <div class="base2" v-if="this.id == 26">
+              <img src="./img/newmap-letter.png" alt="" />
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">ロケットに乗る</a>
+              </div>
+            </div>
+
+            <!--　end画面 -->
+            <div class="base2" v-if="this.id == 27">
+              <p>ＥＮＤ</p>
+              <div class="video">
+                <iframe
+                  width="100%"
+                  height="500px"
+                  src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+                  frameborder="0"
+                  allow="accelerometer; autoplay;
+                  encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="next">
+                <a @click="click" class="next-btn btn-border">終わり</a>
+              </div>
             </div>
             
 
@@ -540,7 +966,7 @@
           <div id="overlay" v-on:click="clickEvent">
               <div id="content"　 v-on:click="stopEvent">
                 <p><slot></slot></p>
-                <button v-on:click="clickEvent">close</button>
+                <button v-on:click="clickEvent">閉じる</button>
               </div>
           </div>
           `,
@@ -557,13 +983,16 @@
       new Vue({
         el: "#app",
         data: {
-          id: 1,
+          id: 20,
           showContent: false,
           answer1: "こんだて",
           answer2: "おもいで",
           answer3: "すいどう",
           answer4: "ほん",
-          input: "",
+          input1: "",
+          input2: "",
+          input3: "",
+          input4: "",
         },
         methods: {
           click: function () {
@@ -592,16 +1021,52 @@
           },
         },
         watch: {
-          input: function () {
-            const judgment = this.input.indexOf(this.answer1);
+          // 謎1
+          input1: function () {
+            const judgment = this.input1.indexOf(this.answer1);
             if (judgment >= 0) {
               this.id = this.id + 1;
             } else {
-              alert("「" + this.input + "」不正解！もう一回挑戦。");
-            }
+              alert("「" + this.input1 + "」不正解！もう一回挑戦。");
+            };
+          },
+          // 謎２
+          input2: function () {
+            const judgment = this.input2.indexOf(this.answer2);
+            if (judgment >= 0) {
+              this.id = this.id + 1;
+            } else {
+              alert("「" + this.input2 + "」不正解！もう一回挑戦。");
+            };
+          },
+          // 謎３
+          input3: function () {
+            const judgment = this.input3.indexOf(this.answer3);
+            if (judgment >= 0) {
+              this.id = this.id + 1;
+            } else {
+              alert("「" + this.input3 + "」不正解！もう一回挑戦。");
+            };
+          },
+          // 謎４
+          input4: function () {
+            const judgment = this.input4.indexOf(this.answer4);
+            if (judgment >= 0) {
+              this.id = this.id + 1;
+            } else {
+              alert("「" + this.input4 + "」不正解！もう一回挑戦。");
+            };
           },
         },
       });
     </script>
+    <script>$( '.js-input' ).keyup(function() {
+      if( $(this).val() ) {
+         $(this).addClass('not-empty');
+      } else {
+         $(this).removeClass('not-empty');
+      }
+    });</script>
+  
   </body>
 </html>
