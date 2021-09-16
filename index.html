@@ -1,968 +1,2686 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      N高×スクラップ 地球からの脱出、環境問題について考える脱出ゲーム
-    </title>
-    <script src="https://unpkg.com/ityped@1.0.3"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
-    />
-    <link rel="icon" type="image/x-icon" href="./img/favicon1.ico" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic"
-      rel="stylesheet"
-    />
-    <style>
-      @font-face {
-        font-family: "Material Icons";
-        font-style: normal;
-        font-weight: 400;
-        src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
-        src: local("Material Icons"), local("MaterialIcons-Regular"),
-          url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"),
-          url(https://example.com/MaterialIcons-Regular.woff) format("woff"),
-          url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
-      }
 
-      .material-icons {
-        font-family: "Material Icons";
-        font-weight: normal;
-        font-style: normal;
-        display: inline-block;
-        line-height: 1;
-        text-transform: none;
-        letter-spacing: normal;
-        word-wrap: normal;
-        white-space: nowrap;
-        direction: ltr;
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    N高×スクラップ 地球からの脱出、環境問題について考える脱出ゲーム
+  </title>
+  <script src="https://unpkg.com/ityped@1.0.3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+  <link rel="icon" type="image/x-icon" href="./img/favicon1.ico" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: "Material Icons";
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://example.com/MaterialIcons-Regular.eot);
+      /* For IE6-8 */
+      src: local("Material Icons"), local("MaterialIcons-Regular"),
+        url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"),
+        url(https://example.com/MaterialIcons-Regular.woff) format("woff"),
+        url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
+    }
 
-        /* Support for all WebKit browsers. */
-        -webkit-font-smoothing: antialiased;
-        /* Support for Safari and Chrome. */
-        text-rendering: optimizeLegibility;
+    .material-icons {
+      font-family: "Material Icons";
+      font-weight: normal;
+      font-style: normal;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
 
-        /* Support for Firefox. */
-        -moz-osx-font-smoothing: grayscale;
+      /* Support for all WebKit browsers. */
+      -webkit-font-smoothing: antialiased;
+      /* Support for Safari and Chrome. */
+      text-rendering: optimizeLegibility;
 
-        /* Support for IE. */
-        font-feature-settings: "liga";
-      }
-      Using the icons in HTML .wf-sawarabigothic {
-        font-family: "Sawarabi Gothic";
-      }
-      body {
-        font-family: "Sawarabi Gothic";
-      }
-      .fade-enter-active {
-        transition: opacity 3s;
-        opacity: 0;
-      }
+      /* Support for Firefox. */
+      -moz-osx-font-smoothing: grayscale;
 
-      .fade-enter-to {
-        opacity: 1;
-      }
+      /* Support for IE. */
+      font-feature-settings: "liga";
+    }
 
-      .fade-leave-active {
-        transition: opacity 3s;
-        opacity: 1;
-      }
+    Using the icons in HTML .wf-sawarabigothic {
+      font-family: "Sawarabi Gothic";
+    }
 
-      .fade-leave-to {
-        opacity: 0;
-      }
+    body {
+      font-family: "Sawarabi Gothic";
+    }
 
-      .fade-enter-active,
-      .fade-leave-active {
-        transition: opacity 0.5s ease;
-      }
+    .fade-enter-active {
+      transition: opacity 3s;
+      opacity: 0;
+    }
 
-      .fade-enter-from,
-      .fade-leave-to {
-        opacity: 0;
-      }
+    .fade-enter-to {
+      opacity: 1;
+    }
 
-      body {
-        background-color: black;
-        height: 100vh;
-        position: relative;
-      }
+    .fade-leave-active {
+      transition: opacity 3s;
+      opacity: 1;
+    }
 
-      header {
-        width: 100%;
-        height: auto;
-        background-color: black;
-        z-index: 1;
-        position: fixed;
-        padding: 20px;
-        color: white;
-      }
+    .fade-leave-to {
+      opacity: 0;
+    }
 
-      header a {
-        position: relative;
-        display: inline-block;
-        transition: 0.3s;
-        color: white;
-        text-decoration: none;
-        letter-spacing: 2px;
-        cursor: pointer;
-      }
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity 0.5s ease;
+    }
 
-      header a::after {
-        position: absolute;
-        bottom: 0.3em;
-        left: 0;
-        content: "";
-        width: 100%;
-        height: 1px;
-        background-color: white;
-        opacity: 0;
-        transition: 0.3s;
-      }
+    .fade-enter-from,
+    .fade-leave-to {
+      opacity: 0;
+    }
 
-      header a:hover::after {
-        bottom: 0;
-        opacity: 1;
-      }
+    body {
+      background-color: black;
+      height: 100vh;
+      position: relative;
+    }
 
-      header h1 {
-        cursor: pointer;
-      }
+    header {
+      width: 100%;
+      height: auto;
+      background-color: black;
+      z-index: 1;
+      position: fixed;
+      padding: 20px;
+      color: white;
+    }
 
-      nav {
-        display: flex;
-        text-align: center;
-        justify-content: space-between;
-      }
+    header a {
+      position: relative;
+      display: inline-block;
+      transition: 0.3s;
+      color: white;
+      text-decoration: none;
+      letter-spacing: 2px;
+      cursor: pointer;
+    }
 
-      ul {
-        display: flex;
-        text-align: right;
-        margin-right: 50px;
-      }
+    header a::after {
+      position: absolute;
+      bottom: 0.3em;
+      left: 0;
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: white;
+      opacity: 0;
+      transition: 0.3s;
+    }
 
-      li {
-        margin: 0 20px;
-      }
+    header a:hover::after {
+      bottom: 0;
+      opacity: 1;
+    }
 
-      .content {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: auto;
-        width: auto;
-        max-width: 800px;
-        height: auto;
-        backdrop-filter: none;
-        backdrop-filter: grayscale(1);
-        backdrop-filter: brightness(1.5);
-        backdrop-filter: blur(5px);
-        backdrop-filter: contrast(0.8);
-        backdrop-filter: invert(0.7);
-        backdrop-filter: opacity(0.4);
-        backdrop-filter: sepia(0.4);
-        backdrop-filter: saturate(1.8);
-        backdrop-filter: hue-rotate(120deg);
-        backdrop-filter: blur(5px);
-      }
+    header h1 {
+      cursor: pointer;
+    }
 
-      .main {
-        width: auto;
-        max-width: 1000px;
-        height: 681px;
-        background-color: #ffffff;
-        border-radius: 30px;
-        margin: 20px;
-        border: solid;
-        margin: 100px 20px;
-        padding: 20px;
-      }
+    nav {
+      display: flex;
+      text-align: center;
+      justify-content: space-between;
+    }
 
-      .base1 {
-        text-align: center;
-        margin: 300px 0;
-      }
+    ul {
+      display: flex;
+      text-align: right;
+      margin-right: 50px;
+    }
 
-      .base1 h1 {
-        font-size: 32px;
-        letter-spacing: 10px;
-        margin: 30px 0;
-      }
+    li {
+      margin: 0 20px;
+    }
 
-      .base1 h2 {
-        margin: 20px 0;
-        letter-spacing: 10px;
-      }
+    .content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      width: auto;
+      max-width: 800px;
+      height: auto;
+      backdrop-filter: none;
+      backdrop-filter: grayscale(1);
+      backdrop-filter: brightness(1.5);
+      backdrop-filter: blur(5px);
+      backdrop-filter: contrast(0.8);
+      backdrop-filter: invert(0.7);
+      backdrop-filter: opacity(0.4);
+      backdrop-filter: sepia(0.4);
+      backdrop-filter: saturate(1.8);
+      backdrop-filter: hue-rotate(120deg);
+      backdrop-filter: blur(5px);
+    }
 
-      .base1 a {
-        color: black;
-        margin: 20px 0;
-      }
+    .main {
+      width: auto;
+      max-width: 1000px;
+      height: 681px;
+      background-color: #ffffff;
+      border-radius: 30px;
+      margin: 20px;
+      border: solid;
+      margin: 100px 20px;
+      padding: 20px;
+    }
 
-      .base1 button {
-        background-color: black;
-        height: 500px;
-        width: 100px;
-      }
-      #content {
-        z-index: 10;
-        width: 70%;
-        padding: 1em;
-        background: white;
-        border-radius: 10px;
-        text-align: right;
-      }
-      #content button{
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        outline: none;
-        padding: 0;
-        appearance: none;
-        position: relative;
-  z-index: 2;
-  background-color: #fff;
-  border: 2px solid #333;
-  color: #333;
-  line-height: 48px;
-  width: 100%;
-  margin-top: 12px;
-      }
-      #content button::after {
-  top: 4px;
-  left: 4px;
-  width: 188px;
-  height: 42px;
-  border: 2px solid #333;
-  opacity: 0;
-}
-#content button::after {
-  opacity: 1;
-}
+    .base1 {
+      text-align: center;
+      margin: 300px 0;
+    }
 
+    .base1 h1 {
+      font-size: 32px;
+      letter-spacing: 10px;
+      margin: 30px 0;
+    }
 
+    .base1 h2 {
+      margin: 20px 0;
+      letter-spacing: 10px;
+    }
 
-      #overlay {
-        /*　要素を重ねた時の順番　*/
+    .base1 a {
+      color: black;
+      margin: 20px 0;
+    }
 
-        z-index: 1;
+    .base1 button {
+      background-color: black;
+      height: 500px;
+      width: 100px;
+    }
 
-        /*　画面全体を覆う設定　*/
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
+    #content {
+      z-index: 10;
+      width: 70%;
+      padding: 1em;
+      background: white;
+      border-radius: 10px;
+      text-align: right;
+    }
 
-        /*　画面の中央に要素を表示させる設定　*/
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .base2 img {
-        max-width: 100%;
-      }
+    #content button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      appearance: none;
+      position: relative;
+      z-index: 2;
+      background-color: #fff;
+      border: 2px solid #333;
+      color: #333;
+      line-height: 48px;
+      width: 100%;
+      margin-top: 12px;
+    }
 
-      .base2 a {
-        cursor: pointer;
-        color: black;
-      }
+    #content button::after {
+      top: 4px;
+      left: 4px;
+      width: 188px;
+      height: 42px;
+      border: 2px solid #333;
+      opacity: 0;
+    }
 
-      footer {
-        height: auto;
-        padding: 20px;
-      }
+    #content button::after {
+      opacity: 1;
+    }
 
-      footer p {
-        font-size: 15px;
-      }
+    .base2 {
+      justify-content: center;
+      align-items: center;
+    }
 
-      /**************SVG****************/
+    .base2 button {
+      margin: 5px 0;
+      width: 100%;
+      padding: 5px;
+      font-size: 15px;
+    }
 
-      path.one {
-        transition: 0.4s;
-        transform: translateX(-60%);
-      }
+    .base2 input {
+      font-size: 30px;
+      padding: 30px;
+      padding-bottom: 10px;
+      width: calc(80% - 60px);
+      margin: 20px 10%;
+      border-bottom: 2px solid #1a1a1a;
+      border-right: none;
+      border-left: none;
+      border-top: none;
+      border-radius: 0px;
+      letter-spacing: 10px;
+      text-align: center;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    } 
 
-      path.two {
-        transition: 0.5s;
-        transform: translateX(-30%);
-      }
+    .base2 h1 {
+      text-align: center;
+      padding-top: 25px;
+      padding-bottom: 22px;
+      font-size: 28px;
+      font-weight: bold; 
+      letter-spacing: 10px;
+      background-color: black;
+      color: white;
+      margin: 20px 100px  10px;
+      border-radius: 100px;
+    }
 
-      .cta:hover path.three {
-        animation: color_anim 1s infinite 0.2s;
-      }
+    .base2-text {
+      text-align: right;
+      padding: 20px;
 
-      .cta:hover path.one {
-        transform: translateX(0%);
-        animation: color_anim 1s infinite 0.6s;
-      }
+    }
 
-      .cta:hover path.two {
-        transform: translateX(0%);
-        animation: color_anim 1s infinite 0.4s;
-      }
+    #overlay {
+      /*　要素を重ねた時の順番　*/
 
-      .footer {
-        color: gray;
-      }
+      z-index: 1;
 
-      .fade-enter-active,
-      .fade-leave-active {
-        transition: opacity 0.5s;
-      }
+      /*　画面全体を覆う設定　*/
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
 
-      .fade-enter,
+      /*　画面の中央に要素を表示させる設定　*/
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .base2 img {
+      max-width: 100%;
+    }
+
+    .base2 a {
+      cursor: pointer;
+      color: black;
+    }
+
+    footer {
+      height: auto;
+      padding: 20px;
+    }
+
+    footer p {
+      font-size: 15px;
+    }
+
+    /**************SVG****************/
+
+    path.one {
+      transition: 0.4s;
+      transform: translateX(-60%);
+    }
+
+    path.two {
+      transition: 0.5s;
+      transform: translateX(-30%);
+    }
+
+    .cta:hover path.three {
+      animation: color_anim 1s infinite 0.2s;
+    }
+
+    .cta:hover path.one {
+      transform: translateX(0%);
+      animation: color_anim 1s infinite 0.6s;
+    }
+
+    .cta:hover path.two {
+      transform: translateX(0%);
+      animation: color_anim 1s infinite 0.4s;
+    }
+
+    .footer {
+      color: gray;
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity 0.5s;
+    }
+
+    .fade-enter,
     .fade-leave-to
 
-    /* .fade-leave-active below version 2.1.8 */ {
+    /* .fade-leave-active below version 2.1.8 */
+      {
+      opacity: 0;
+    }
+
+    .ityped-cursor {
+      font-size: 1em;
+      opacity: 1;
+      -webkit-animation: blink 0.3s infinite;
+      -moz-animation: blink 0.3s infinite;
+      animation: blink 0.3s infinite;
+      animation-direction: alternate;
+    }
+
+    @keyframes blink {
+      100% {
         opacity: 0;
       }
-      .ityped-cursor {
-        font-size: 1em;
-        opacity: 1;
-        -webkit-animation: blink 0.3s infinite;
-        -moz-animation: blink 0.3s infinite;
-        animation: blink 0.3s infinite;
-        animation-direction: alternate;
+    }
+
+    @-webkit-keyframes blink {
+      100% {
+        opacity: 0;
       }
+    }
 
-      @keyframes blink {
-        100% {
-          opacity: 0;
-        }
+    @-moz-keyframes blink {
+      100% {
+        opacity: 0;
       }
+    }
 
-      @-webkit-keyframes blink {
-        100% {
-          opacity: 0;
-        }
-      }
+    .video {
+      pointer-events: none;
+    }
 
-      @-moz-keyframes blink {
-        100% {
-          opacity: 0;
-        }
-      }
-      .video {
-        pointer-events: none;
-      }
-      a.btn-border {
-        border: 2px solid #000;
-        border-radius: 0;
-        background: #fff;
-      }
+    a.btn-border {
+      border: 2px solid #000;
+      border-radius: 0;
+      background: #fff;
+    }
 
-      a.btn-border:hover {
-        color: #fff;
-        background: #000;
-      }
+    a.btn-border:hover {
+      color: #fff;
+      background: #000;
+    }
 
-      .next-btn {
-        font-size: 1.6rem;
-        font-weight: 700;
-        line-height: 1.5;
-        position: relative;
-        display: inline-block;
-        padding: 1rem 4rem;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        -webkit-transition: all 0.3s;
-        transition: all 0.3s;
-        text-align: center;
-        vertical-align: middle;
-        text-decoration: none;
-        letter-spacing: 0.1em;
-        color: #212529;
-        border-radius: 0.5rem;
-      }
-      .next {
-        padding: 50px;
-        text-align: center;
-      }
-      .clear1 {
-        height: 500px;
-        width: 100%;
-        text-align: center;
-  padding:20px 0;
-      }
-      .clear1 h1 {
-        margin: 0 auto;
-        font-size: 60px;
-      }
-      .clear1 h2 {
-        margin: 0 auto;
-        font-size: 30px;
-        margin: 30px;
-      }
+    .next-btn {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.5;
+      position: relative;
+      display: inline-block;
+      padding: 1rem 4rem;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      text-align: center;
+      vertical-align: middle;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      color: #212529;
+      border-radius: 0.5rem;
+    }
 
-      
-    </style>
-      <style>
-        .align-center {
-          text-align: center;
-       }
-        .row {
-          margin: -20px 0;
-       }
-        .row:after {
-          content: "";
-          display: table;
-          clear: both;
-       }
-        .row .col {
-          padding: 0 20px;
-          float: left;
-          box-sizing: border-box;
-       }
-        .row .col.x-50 {
-          width: 50%;
-       }
-        .row .col.x-100 {
-          width: 100%;
-       }
-        .content-wrapper {
-          min-height: 100%;
-          position: relative;
-       }
-        .get-in-touch {
-          max-width: 650px;
-          margin: 0 auto;
-          position: relative;
-          top: 50%;
-          transform: translateY(-50%);
-       }
-        .get-in-touch .title {
-          text-align: center;
-          font-family: Raleway, sans-serif;
-          text-transform: uppercase;
-          letter-spacing: 3px;
-          font-size: 36px;
-          line-height: 48px;
-          padding-bottom: 48px;
-       }
-        .contact-form .form-field {
-          position: relative;
-          margin: 32px 0;
-       }
-        .contact-form .input-text {
-          display: block;
-          width: 100%;
-          height: 36px;
-          border-width: 0 0 2px 0;
-          border-color: #000;
-          font-family: Lusitana, serif;
-          font-size: 18px;
-          line-height: 26px;
-          font-weight: 400;
-       }
-        .contact-form .input-text:focus {
-          outline: none;
-       }
-        .contact-form .input-text:focus + .label, .contact-form .input-text.not-empty + .label {
-          transform: translateY(-24px);
-       }
-        .contact-form .label {
-          position: absolute;
-          left: 20px;
-          bottom: 11px;
-          font-family: Lusitana, serif;
-          font-size: 18px;
-          line-height: 26px;
-          font-weight: 400;
-          color: #888;
-          cursor: text;
-          transition: transform 0.2s ease-in-out;
-       }
-        .contact-form .submit-btn {
-          display: inline-block;
-          background-color: #000;
-          color: #fff;
-          font-family: Raleway, sans-serif;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          font-size: 16px;
-          line-height: 24px;
-          padding: 8px 16px;
-          border: none;
-          cursor: pointer;
-       }
-        .note {
-          position: absolute;
-          left: 0;
-          bottom: 10px;
-          width: 100%;
-          text-align: center;
-          font-family: Lusitana, serif;
-          font-size: 16px;
-          line-height: 21px;
-       }
-        .note .link {
-          color: #888;
-          text-decoration: none;
-       }
-        .note .link:hover {
-          text-decoration: underline;
-       }
-        
-         </style>
-  </head>
-  <link rel="stylesheet" href="./css/a.css" />
+    .next {
+      padding: 50px;
+      text-align: center;
+    }
 
-  <body>
-    <div id="app">
-      <!-- 背景動作　-->
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
-      <div class="firefly"></div>
+    .clear1 {
+      height: 500px;
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+    }
 
-      <!-- ヘッダー -->
-      <header>
-        <nav>
-          <h1 href="" @click="top">YUME KAWAII</h1>
-          <ul>
-            <li><a href="">ホーム</a></li>
-            <li><a @click="story">ストーリー</a></li>
-            <li><a @click="help">ヘルプ</a></li>
-            <li><a @click="cont">お問い合わせ</a></li>
-          </ul>
-        </nav>
-      </header>
 
-      <!-- ゲーム画面 -->
-      <div class="content">
-        <div class="main">
-          <div class="center">
+    .clear1 p {
+      font-size: 50px;
+      margin-top: 200px;
+      font-weight: 800; 
+    }
+  </style>
+  <style>
+    .align-center {
+      text-align: center;
+    }
 
-            <!-- スタート画面 -->
-            <div class="base1" v-if="this.id == 1">
-              <audio
-                src="./sound/プロジェクト ゴースト -.m4a"
-                preload="metadata"
-                autoplay
-                loop
-              ></audio>
-              <h1>Escape From Earth</h1>
-              <h2>地球からの脱出</h2>
-              <a @click="click" class="cta" href="#"> Start </a>
-            </div>
+    .row {
+      margin: -20px 0;
+    }
 
-            <!-- 導入１ -->
-            <div class="base2" v-if="this.id == 2">
-              <div class="video">
-                <iframe
-                  width="100%"
-                  height="500px"
-                  src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
-                  frameborder="0"
-                  allow="accelerometer; autoplay;
-                  encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">次へ</a>
-              </div>
-            </div>
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
 
-            <!-- 謎１ -->
-            <div class="base2" v-if="this.id == 3">
-              <img src="./img/謎step1.svg" alt="" />
-              <audio
-                src="./sound/迷いの森.mp3"
-                preload="metadata"
-                autoplay
-                loop
-              ></audio>
-              <!-- ヒント謎1 -->
-              <button v-on:click="openModal">ヒントを見る</button>
-              <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step1ヒント.svg" alt=""></open-modal>
-              <input　v-model.lazy="input1"　id="message" class="input-text js-input" type="text" required>
-            </div>
+    .row .col {
+      padding: 0 20px;
+      float: left;
+      box-sizing: border-box;
+    }
 
-            <!-- 正解画面謎1 -->
-            <div class="base2" v-if="this.id == 4">
-              <audio
-                src="./sound/異端審問.mp3"
-                preload="metadata"
-                autoplay
-                loop
-              ></audio>
-              <div class="clear1">
-                <div>
-                <h1>正解！おめでとう</h1>
-                <h2>こんだてを考える場所といえば？</h2>
-              </div>
-              </div>
-              <div class="next">
-                <a @click="click" class="map-btn btn-border">MAPを開く</a>
-              </div>
-            </div>
+    .row .col.x-50 {
+      width: 50%;
+    }
 
-            <!-- マップ -->
-            <div class="base2" v-if="this.id == 5">
-              <img src="./img/newmap-letter.png" alt="" />
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">学校に行く</a>
-              </div>
-            </div>
+    .row .col.x-100 {
+      width: 100%;
+    }
 
-            <!--　学校内 -->
-            <div class="base2" v-if="this.id == 6">
-              <p>ここは学校</p>
-              <img src="./img/school-map.png" alt="" />
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">給食室に行く</a>
-              </div>
-            </div>
+    .content-wrapper {
+      min-height: 100%;
+      position: relative;
+    }
 
-            <!-- 給食室導入 -->
-            <div class="base2" v-if="this.id == 7">
-              <p>ここは給食室</p>
-              <div class="video">
-                <iframe
-                  width="100%"
-                  height="500px"
-                  src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
-                  frameborder="0"
-                  allow="accelerometer; autoplay;
-                  encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">次へ</a>
-              </div>
-            </div>
+    .get-in-touch {
+      max-width: 650px;
+      margin: 0 auto;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
 
-            <!-- 給食室内 -->
-            <div class="base2" v-if="this.id == 8">
-              <p>ここは給食室</p>
-              <img src="./img/仮地図.svg" alt="" />
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">こんだて表を見る</a>
-              </div>
-            </div>
+    .get-in-touch .title {
+      text-align: center;
+      font-family: Raleway, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 36px;
+      line-height: 48px;
+      padding-bottom: 48px;
+    }
 
-            <!-- 謎2 -->
-            <div class="base2" v-if="this.id == 9">
-              <img src="./img/謎step2.svg" alt="" />
-              <audio
-                src="./sound/迷いの森.mp3"
-                preload="metadata"
-                autoplay
-                loop
-              ></audio>
-              <!-- ヒント謎2 -->
-              <button v-on:click="openModal">ヒントを見る</button>
-              <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step2ヒント.svg" alt=""></open-modal>
-              <h1>答えを入力</h1>
-              <input v-model.lazy="input2" placeholder="ひらがな"></input>
-            </div>
+    .contact-form .form-field {
+      position: relative;
+      margin: 32px 0;
+    }
 
-            <!-- 正解画面謎2 -->
-            <div class="base2" v-if="this.id == 10">
-              <audio
-                src="./sound/異端審問.mp3"
-                preload="metadata"
-                autoplay
-                loop
-              ></audio>
-              <div class="clear1">
-                <div>
-                <h1>正解！おめでとう</h1>
-                <h2>aaaa</h2>
-              </div>
-              </div>
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">給食室を出る</a>
-              </div>
-            </div>
+    .contact-form .input-text {
+      display: block;
+      width: 100%;
+      height: 36px;
+      border-width: 0 0 2px 0;
+      border-color: #000;
+      font-family: Lusitana, serif;
+      font-size: 18px;
+      line-height: 26px;
+      font-weight: 400;
+    }
 
-             <!-- マップ2 -->
-             <div class="base2" v-if="this.id == 11">
-              <img src="./img/newmap-letter.png" alt="" />
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">公園に行く</a>
-              </div>
-            </div>
+    .contact-form .input-text:focus {
+      outline: none;
+    }
 
-            <!-- 公園導入 -->
-            <div class="base2" v-if="this.id == 12">
-              <p>ここは公園</p>
-              <div class="video">
-                <iframe
-                  width="100%"
-                  height="500px"
-                  src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
-                  frameborder="0"
-                  allow="accelerometer; autoplay;
-                  encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">次へ</a>
-              </div>
-            </div>
+    .contact-form .input-text:focus+.label,
+    .contact-form .input-text.not-empty+.label {
+      transform: translateY(-24px);
+    }
 
-             <!-- 謎3 -->
-             <div class="base2" v-if="this.id == 13">
-              <img src="./img/謎step3.svg" alt="" />
-              <audio
-                src="./sound/迷いの森.mp3"
-                preload="metadata"
-                autoplay
-                loop
-              ></audio>
-              <!-- ヒント謎1 -->
-              <button v-on:click="openModal">ヒントを見る</button>
-              <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step3ヒント.svg" alt=""></open-modal>
-              <h1>答えを入力</h1>
-              <input v-model.lazy="input3" placeholder="ひらがな"></input>
-            </div>
+    .contact-form .label {
+      position: absolute;
+      left: 20px;
+      bottom: 11px;
+      font-family: Lusitana, serif;
+      font-size: 18px;
+      line-height: 26px;
+      font-weight: 400;
+      color: #888;
+      cursor: text;
+      transition: transform 0.2s ease-in-out;
+    }
 
-            <!-- 正解画面謎3 -->
-            <div class="base2" v-if="this.id == 14">
-              <audio
-              src="./sound/異端審問.mp3"
-              preload="metadata"
-              autoplay
-              loop
-            ></audio>
-            <div class="clear1">
-              <div>
-              <h1>正解！おめでとう</h1>
-              <h2>すいどう</h2>
-            </div>
+    .contact-form .submit-btn {
+      display: inline-block;
+      background-color: #000;
+      color: #fff;
+      font-family: Raleway, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 16px;
+      line-height: 24px;
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .note {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-family: Lusitana, serif;
+      font-size: 16px;
+      line-height: 21px;
+    }
+
+    .note .link {
+      color: #888;
+      text-decoration: none;
+    }
+
+    .note .link:hover {
+      text-decoration: underline;
+    }
+
+    /* mapの当たり判定について */
+
+    .map-div {
+      width: 100%;
+      position: relative;
+    }
+
+    .map-back {
+      height: calc(67vw - 60px);
+      max-height: 480px;
+    }
+
+    .map-back img {
+      width: 100%;
+      position: absolute;
+    }
+
+    .house {
+      width: 100%;
+      height: 10%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .house1 {
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .color .color1 .color2 .color3 .color4 .color5 {
+      cursor: pointer;
+    }
+
+    .color {
+      background-color: black;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .color1 {
+      background-color: red;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .color2 {
+      background-color: blue;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .color3 {
+      background-color: yellow;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .color4 {
+      background-color: green;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .color5 {
+      background-color: aqua;
+      opacity: 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<link rel="stylesheet" href="./css/a.css" />
+
+<body>
+  <div id="app">
+    <!-- 背景動作　-->
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+
+    <!-- ヘッダー -->
+    <header>
+      <nav>
+        <h1 href="" @click="top">YUME KAWAII</h1>
+        <ul>
+          <li><a href="">ホーム</a></li>
+          <li><a @click="story">ストーリー</a></li>
+          <li><a @click="help">ヘルプ</a></li>
+          <li><a @click="cont">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ゲーム画面 -->
+    <div class="content">
+      <div class="main">
+        <div class="center">
+
+          <!-- スタート画面 -->
+          <div class="base1" v-if="this.id == 1">
+            <audio src="./sound/プロジェクト ゴースト -.m4a" preload="metadata" autoplay loop></audio>
+            <h1>Escape From Earth</h1>
+            <h2>地球からの脱出</h2>
+            <a @click="click" class="cta" href="#"> Start </a>
+          </div>
+
+          <!-- 導入１ -->
+          <div class="base2" v-if="this.id == 2">
+            <div class="video">
+              <iframe width="100%" height="500px"
+                src="https://www.youtube.com/embed/28PCRFCPrwc?rel=0&autoplay=1&playsinline=1&loop=1&playlist=28PCRFCPrwc&controls=0&disablekb=1"
+                frameborder="0" allow="accelerometer; autoplay;
+                  encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="next">
-              <a @click="click" class="next-btn btn-border">公園に戻る</a>
-            </div>
-            </div>
-                         <!-- 公園内 -->
-                         <div class="base2" v-if="this.id == 15">
-                          <p>ここは公園</p>
-                          <img src="./img/仮地図.svg" alt="" />
-                          <div class="next">
-                            <a @click="click" class="next-btn btn-border">水道へ行く</a>
-                          </div>
-                        </div>
-
-            <!--　水道内 -->
-            <div class="base2" v-if="this.id == 16">
-              <h1>ここは水道</h1>
-              <p>近くに何かあるぞ！</p>
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">詳しく見る</a>
-              </div>
-            </div>
-
-            <!--　マップゲット -->
-            <div class="base2" v-if="this.id == 17">
-                <h1>地図の破片だ！</h1>
-                <div class="next">
-                  <a @click="click" class="next-btn btn-border">マップを修復する</a>
-                </div>
-            </div>
-
-            <!--　新マップ -->
-            <div class="base2" v-if="this.id == 18">
-              <img src="./img/newmap-letter.png" alt="" />
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">図書館へ行く</a>
-              </div>
-            </div>
-
-            <!--　図書館導入 -->
-            <div class="base2" v-if="this.id == 19">
-              <p>ここは図書館</p>
-              <div class="video">
-                <iframe
-                  width="100%"
-                  height="500px"
-                  src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
-                  frameborder="0"
-                  allow="accelerometer; autoplay;
-                  encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">次へ</a>
-              </div>
-            </div>
-
-            <!--　図書館内 -->
-            <div class="base2" v-if="this.id == 20">
-              <p>ここは図書館</p>
-              <img src="./img/仮地図.svg" alt="" />
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">おじさんに話しかける</a>
-              </div>
-            </div>
-
-            <!--　謎4 -->
-            <div class="base2" v-if="this.id == 21">
-               <img src="./img/謎step4.svg" alt="" />
-              <audio
-                src="./sound/迷いの森.mp3"
-                preload="metadata"
-                autoplay
-                loop
-              ></audio>
-              <!-- ヒント謎4 -->
-              <button v-on:click="openModal">ヒントを見る</button>
-              <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step4ヒント.svg" alt=""></open-modal>
-              <h1>答えを入力</h1>
-              <input v-model.lazy="input4" placeholder="ひらがな"></input>
-            </div>
-
-            <!--　正解画面謎4 -->
-            <div class="base2" v-if="this.id == 22">
-              <audio
-              src="./sound/異端審問.mp3"
-              preload="metadata"
-              autoplay
-              loop
-            ></audio>
-            <div class="clear1">
-              <div>
-              <h1>正解！おめでとう</h1>
-              <h2>答えは、本</h2>
-            </div>
-            </div>
-            <div class="next">
-              <a @click="click" class="next-btn btn-border">図書館へ戻る</a>
-            </div>
-            </div>
-
-            <!--　本をもらう動画 -->
-            <div class="base2" v-if="this.id == 23">
-              <p>ここは図書館</p>
-              <div class="video">
-                <iframe
-                  width="100%"
-                  height="500px"
-                  src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
-                  frameborder="0"
-                  allow="accelerometer; autoplay;
-                  encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">次へ</a>
-              </div>
-            </div>
-
-            <!--　謎5 -->
-            <div class="base2" v-if="this.id == 24">
-              <p>ここで謎５</p>
               <a @click="click" class="next-btn btn-border">次へ</a>
             </div>
+          </div>
 
-            <!--　正解画面謎5 -->
-            <div class="base2" v-if="this.id == 25">
-              <audio
-              src="./sound/異端審問.mp3"
-              preload="metadata"
-              autoplay
-              loop
-            ></audio>
+          <!-- 謎１ -->
+          <div class="base2" v-if="this.id == 3">
+            <img src="./img/nazostep1.webp" alt="" />
+            <audio src="./sound/迷いの森.mp3" preload="metadata" autoplay loop></audio>
+            <!-- ヒント謎1 -->
+            <button v-on:click="openModal">ヒントを見る</button>
+            <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step1tips.webp" alt="">
+            </open-modal>
+            <input　v-model.lazy="input1" maxlength="4" placeholder='ひらがなで答えを入力' 　id="message"
+              class="input-text js-input" type="text" required>
+          </div>
+
+          <!-- 正解画面謎1 -->
+          <div class="base2" v-if="this.id == 4">
+            <audio src="./sound/異端審問.mp3" preload="metadata" autoplay loop></audio>
             <div class="clear1">
               <div>
-              <h1>正解！おめでとう</h1>
-              <h2>答えは、？？？</h2>
-            </div>
+                <h1>正解</h1>
+                <p>答えは、「こんだて」</p>
+                <h2 style="margin-top: 30px">こんだてを考える場所といえば？</h2>
+              </div>
             </div>
             <div class="next">
-              <a @click="click" class="next-btn btn-border">図書館を出る</a>
+              <a @click="click" class="next-btn btn-border">マップを開く</a>
             </div>
-            </div>
+          </div>
 
-            <!--　新ロケットマップ -->
-            <div class="base2" v-if="this.id == 26">
-              <img src="./img/newmap-letter.png" alt="" />
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">ロケットに乗る</a>
+          <!-- マップ -->
+          <div class="base2" v-if="this.id == 5">
+            <h1>欠けたマップ</h1>
+            <audio src="./sound/不穏な影.mp3" preload="metadata" autoplay loop></audio>
+            <div class="map-div">
+              <div class="map-back">
+                <img src="./img/map1.webp" alt="">
+                <div class="house">
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                </div>
+                <div class="house">
+                  <div class="house1"></div>
+                  <div class="house1 color"></div>
+                  <div class="house1 color"></div>
+                  <div class="house1 color"></div>
+                  <div class="house1 color"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div @click="nopark1" class="house1 color2"></div>
+                  <div @click="nopark1" class="house1 color2"></div>
+                  <div @click="nopark1" class="house1 color2"></div>
+                  <div @click="nopark1" class="house1 color2"></div>
+                  <div @click="nopark1" class="house1 color2"></div>
+                  <div @click="noyaoya1" class="house1 color3"></div>
+                  <div @click="noyaoya1" class="house1 color3"></div>
+                  <div @click="noyaoya1" class="house1 color3"></div>
+                  <div @click="noyaoya1" class="house1 color3"></div>
+                  <div @click="noyaoya1" class="house1 color3"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                </div>
+                <div class="house">
+                  <div class="house1"></div>
+                  <div class="house1 color"></div>
+                  <div class="house1 color"></div>
+                  <div class="house1 color"></div>
+                  <div class="house1 color"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div @click="nopark1" class="house1 color2"></div>
+                  <div @click="nopark1" class="house1 color2"></div>
+                  <div @click="nopark1" class="house1 color2"></div>
+                  <div @click="nopark1" class="house1 color2"></div>
+                  <div @click="nopark1" class="house1 color2"></div>
+                  <div @click="noyaoya1" class="house1 color3"></div>
+                  <div @click="noyaoya1" class="house1 color3"></div>
+                  <div @click="noyaoya1" class="house1 color3"></div>
+                  <div @click="noyaoya1" class="house1 color3"></div>
+                  <div @click="noyaoya1" class="house1 color3"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                </div>
+                <div class="house">
+                  <div class="house1"></div>
+                  <div class="house1 color"></div>
+                  <div class="house1 color"></div>
+                  <div class="house1 color"></div>
+                  <div class="house1 color"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <div class="house1"></div>
+                  <<div @click="nopark1" class="house1 color2">
+                </div>
+                <div @click="nopark1" class="house1 color2"></div>
+                <div @click="nopark1" class="house1 color2"></div>
+                <div @click="nopark1" class="house1 color2"></div>
+                <div @click="nopark1" class="house1 color2"></div>
+                <div @click="noyaoya1" class="house1 color3"></div>
+                <div @click="noyaoya1" class="house1 color3"></div>
+                <div @click="noyaoya1" class="house1 color3"></div>
+                <div @click="noyaoya1" class="house1 color3"></div>
+                <div @click="noyaoya1" class="house1 color3"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div @click="nohouse1" class="house1 color4"></div>
+                <div @click="nohouse1" class="house1 color4"></div>
+                <div @click="nohouse1" class="house1 color4"></div>
+                <div @click="nohouse1" class="house1 color4"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1 color5"></div>
+                <div class="house1 color5"></div>
+                <div class="house1 color5"></div>
+                <div class="house1 color5"></div>
+                <div class="house1 color5"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div @click="nohouse1" class="house1 color4"></div>
+                <div @click="nohouse1" class="house1 color4"></div>
+                <div @click="nohouse1" class="house1 color4"></div>
+                <div @click="nohouse1" class="house1 color4"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div @click="nohouse1" class="house1 color4"></div>
+                <div @click="nohouse1" class="house1 color4"></div>
+                <div @click="nohouse1" class="house1 color4"></div>
+                <div @click="nohouse1" class="house1 color4"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="nostore1" class="house1 color5"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1  color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
               </div>
             </div>
+          </div>
+          <p　class="base2-text">向かいたい場所をクリック！</p>
+        </div>
 
-            <!--　end画面 -->
-            <div class="base2" v-if="this.id == 27">
-              <p>ＥＮＤ</p>
-              <div class="video">
-                <iframe
-                  width="100%"
-                  height="500px"
-                  src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
-                  frameborder="0"
-                  allow="accelerometer; autoplay;
-                  encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
+        <!--　学校内 -->
+        <div class="base2" v-if="this.id == 6">
+          <h1>学校の校舎内</h1>
+          <div class="map-div">
+            <div class="map-back">
+              <img src="./img/map-school.webp" alt="" />
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
               </div>
-              <div class="next">
-                <a @click="click" class="next-btn btn-border">終わり</a>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
               </div>
             </div>
-            
-
-            <!-- ストーリー -->
-            <div class="base3" v-if="this.id == 100">
-              <h1>ストーリー</h1>
-            </div>
-
-            <!-- ヘルプ -->
-            <div class="base3" v-if="this.id == 101">
-              <h1>ヘルプ</h1>
-            </div>
-
-            <!-- お問い合わせ -->
-            <div class="base3" v-if="this.id == 102">
-              <h1>お問い合わせ</h1>
-            </div>
-            
           </div>
         </div>
-        <p class="footer" style="text-align: right">
-          Copyright © 2020 Yumekawaii All rights reserved.
-        </p>
-      </div>
-    </div>
 
-    <script>
-      // ヒント
-      Vue.component("open-modal", {
-        template: `
+        <!-- 給食室導入 -->
+        <div class="base2" v-if="this.id == 7">
+          <div class="video">
+            <iframe width="100%" height="500px"
+              src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+              frameborder="0" allow="accelerometer; autoplay;
+                  encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">次へ</a>
+          </div>
+        </div>
+
+        <!-- 給食室内 -->
+        <div class="base2" v-if="this.id == 8">
+          <h1>給食室</h1>
+          <div class="map-div">
+            <div class="map-back">
+              <img src="./img/map-lunch.webp" alt="" />
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+            </div>
+          </div>
+          <h2 style="margin-top: 40px;">献立表を探そう</h2>
+        </div>
+
+        <!-- 謎2 -->
+        <div class="base2" v-if="this.id == 9">
+          <img src="./img/nazostep2.webp" alt="" />
+          <audio src="./sound/迷いの森.mp3" preload="metadata" autoplay loop></audio>
+          <!-- ヒント謎2 -->
+          <button v-on:click="openModal">ヒントを見る</button>
+          <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step2tips.webp" alt="">
+          </open-modal>
+          <input v-model.lazy="input2" 　maxlength="4" placeholder='ひらがなで答えを入力'></input>
+        </div>
+
+        <!-- 正解画面謎2 -->
+        <div class="base2" v-if="this.id == 10">
+          <audio src="./sound/異端審問.mp3" preload="metadata" autoplay loop></audio>
+          <div class="clear1">
+            <div>
+              <h1>正解</h1>
+              <p>答えは、「おもいで」</p>
+              <h2 style="margin-top: 20px;">これは何かヒントになりそうだ！</h2>
+            </div>
+          </div>
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">給食室を出る</a>
+          </div>
+        </div>
+
+        <!-- マップ2 -->
+        <div class="base2" v-if="this.id == 11">
+          <h1>欠けたマップ</h1>
+          <div class="map-div">
+            <div class="map-back">
+              <img src="./img/map1.webp" alt="">
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1 color"></div>
+                <div class="house1 color"></div>
+                <div class="house1 color"></div>
+                <div class="house1 color"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1 color"></div>
+                <div class="house1 color"></div>
+                <div class="house1 color"></div>
+                <div class="house1 color"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1 color"></div>
+                <div class="house1 color"></div>
+                <div class="house1 color"></div>
+                <div class="house1 color"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="click" class="house1 color2"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div @click="noyaoya2" class="house1 color3"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div @click="nohouse2" class="house1 color4"></div>
+                <div @click="nohouse2" class="house1 color4"></div>
+                <div @click="nohouse2" class="house1 color4"></div>
+                <div @click="nohouse2" class="house1 color4"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div @click="nohouse2" class="house1 color4"></div>
+                <div @click="nohouse2" class="house1 color4"></div>
+                <div @click="nohouse2" class="house1 color4"></div>
+                <div @click="nohouse2" class="house1 color4"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div @click="nohouse2" class="house1 color4"></div>
+                <div @click="nohouse2" class="house1 color4"></div>
+                <div @click="nohouse2" class="house1 color4"></div>
+                <div @click="nohouse2" class="house1 color4"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="nostore2" class="house1 color5"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div @click="noschool2" class="house1  color1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+            </div>
+          </div>
+          <p　class="base2-text">向かいたい場所をクリック！</p>
+        </div>
+
+        <!-- 公園導入 -->
+        <div class="base2" v-if="this.id == 12">
+          <div class="video">
+            <iframe width="100%" height="500px"
+              src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+              frameborder="0" allow="accelerometer; autoplay;
+                  encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">次へ</a>
+          </div>
+        </div>
+
+        <!-- 謎3 -->
+        <div class="base2" v-if="this.id == 13">
+          <img src="./img/nazostep3.webp" alt="" />
+          <audio src="./sound/迷いの森.mp3" preload="metadata" autoplay loop></audio>
+          <!-- ヒント謎1 -->
+          <button v-on:click="openModal">ヒントを見る</button>
+          <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step3tips.webp" alt="">
+          </open-modal>
+          <input v-model.lazy="input3" maxlength="4" placeholder="ひらがなで答えを入力"></input>
+        </div>
+
+        <!-- 正解画面謎3 -->
+        <div class="base2" v-if="this.id == 14">
+          <audio src="./sound/異端審問.mp3" preload="metadata" autoplay loop></audio>
+          <div class="clear1">
+            <div>
+              <h1>正解</h1>
+              <p>答えは、「すいどう」<p>
+            </div>
+          </div>
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">公園に戻る</a>
+          </div>
+        </div>
+        <!-- 公園内 -->
+        <div class="base2" v-if="this.id == 15">
+          <h1>ここは公園</h1>
+          <div class="map-div">
+            <div class="map-back">
+              <img src="./img/map-park.webp" alt="" />
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+            </div>
+            </div>
+        </div>
+
+        <!--　水道内 -->
+        <div class="base2" v-if="this.id == 16">
+          <h1>ここは水道</h1>
+          <img src="./img/water.webp" alt="">
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">詳しく見る</a>
+          </div>
+        </div>
+
+        <!--　マップゲット -->
+        <div class="base2" v-if="this.id == 17">
+          <h1>地図の破片だ！</h1>
+          <img src="./img/map1.5.webp" alt="" />
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">マップを修復する</a>
+          </div>
+        </div>
+
+        <!--　新マップ -->
+        <div class="base2" v-if="this.id == 18">
+          <h1>完成マップ</h1>
+          <div class="map-div">
+            <div class="map-back">
+              <img src="./img/map2.webp" alt="">
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div @click="click" class="house1 color"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="nopark3" class="house1 color2"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div @click="noyaoya3" class="house1 color3"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div @click="nohouse3" class="house1 color4"></div>
+                <div @click="nohouse3" class="house1 color4"></div>
+                <div @click="nohouse3" class="house1 color4"></div>
+                <div @click="nohouse3" class="house1 color4"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div @click="nohouse3" class="house1 color4"></div>
+                <div @click="nohouse3" class="house1 color4"></div>
+                <div @click="nohouse3" class="house1 color4"></div>
+                <div @click="nohouse3" class="house1 color4"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div @click="nohouse3" class="house1 color4"></div>
+                <div @click="nohouse3" class="house1 color4"></div>
+                <div @click="nohouse3" class="house1 color4"></div>
+                <div @click="nohouse3" class="house1 color4"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="nostore3" class="house1 color5"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div @click="noschool3" class="house1  color1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+            </div>
+          </div>
+          <p　class="base2-text">向かいたい場所をクリック！</p>
+        </div>
+
+        <!--　図書館導入 -->
+        <div class="base2" v-if="this.id == 19">
+          <div class="video">
+            <iframe width="100%" height="500px"
+              src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+              frameborder="0" allow="accelerometer; autoplay;
+                  encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">次へ</a>
+          </div>
+        </div>
+
+        <!--　図書館内 -->
+        <div class="base2" v-if="this.id == 20">
+          <h1>ここは図書館</h1>
+          <div class="map-div">
+            <div class="map-back">
+              <img src="./img/map-library.webp" alt="" />
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+                <div @click="click" class="house1 color1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+              <div class="house">
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+                <div class="house1"></div>
+              </div>
+            </div>
+            </div>
+        </div>
+
+        <!--　謎4 -->
+        <div class="base2" v-if="this.id == 21">
+          <img src="./img/nazostep4.webp" alt="" />
+          <audio src="./sound/迷いの森.mp3" preload="metadata" autoplay loop></audio>
+          <!-- ヒント謎4 -->
+          <button v-on:click="openModal">ヒントを見る</button>
+          <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step4tips.webp" alt="">
+          </open-modal>
+          <input v-model.lazy="input4" 　maxlength="2" placeholder="ひらがなで答えを入力"></input>
+        </div>
+
+        <!--　正解画面謎4 -->
+        <div class="base2" v-if="this.id == 22">
+          <audio src="./sound/異端審問.mp3" preload="metadata" autoplay loop></audio>
+          <div class="clear1">
+            <div>
+              <h1>正解</h1>
+              <p>答えは、「ほん」</p>
+            </div>
+          </div>
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">次へ</a>
+          </div>
+        </div>
+
+        <!--　本をもらう動画 -->
+        <div class="base2" v-if="this.id == 23">
+          <div class="video">
+            <iframe width="100%" height="500px"
+              src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+              frameborder="0" allow="accelerometer; autoplay;
+                  encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">次へ</a>
+          </div>
+        </div>
+
+        <!--　謎5 -->
+        <div class="base2" v-if="this.id == 24">
+          <p>ここで謎５</p>
+          <a @click="click" class="next-btn btn-border">次へ</a>
+        </div>
+
+        <!--　正解画面謎5 -->
+        <div class="base2" v-if="this.id == 25">
+          <audio src="./sound/異端審問.mp3" preload="metadata" autoplay loop></audio>
+          <div class="clear1">
+            <div>
+              <h1>正解</h1>
+              <h2>答えは、？？？</h2>
+            </div>
+          </div>
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">図書館を出る</a>
+          </div>
+        </div>
+
+        <!--　新ロケットマップ -->
+        <div class="base2" v-if="this.id == 26">
+         <img src="./img/roket.webp" alt="">
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">ロケットに乗る</a>
+          </div>
+        </div>
+
+        <!--　end画面 -->
+        <div class="base2" v-if="this.id == 27">
+          <div class="video">
+            <iframe width="100%" height="500px"
+              src="https://www.youtube.com/embed/4f2PJKdriqA?rel=0&autoplay=1&playsinline=1&loop=1&playlist=4f2PJKdriqA&controls=0&disablekb=1"
+              frameborder="0" allow="accelerometer; autoplay;
+                  encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="next">
+            <a @click="end" class="next-btn btn-border">終わり</a>
+          </div>
+        </div>
+
+
+        <!-- ストーリー -->
+        <div class="base3" v-if="this.id == 100">
+          <h1>ストーリー</h1>
+        </div>
+
+        <!-- ヘルプ -->
+        <div class="base3" v-if="this.id == 101">
+          <h1>ヘルプ</h1>
+        </div>
+
+        <!-- お問い合わせ -->
+        <div class="base3" v-if="this.id == 102">
+          <h1>お問い合わせ</h1>
+        </div>
+
+      </div>
+
+      <!-- 終わり -->
+      <div class="base3" v-if="this.id == 200">
+        <a href="./img/map-library.webp" download>終了証明書を発行する</a>
+        <a href="">感想フォーム</a>
+        <a href="">はじめの画面に戻る</a>
+      </div>
+
+      <!-- マップ１用 -->
+      <!-- クリア家1 -->
+      <div class="base2" v-if="this.id == 150">
+        <img src="./img/clear-house.webp" alt="">
+        <div class="next">
+          <a @click="mapback1" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+      <!-- ロック公園1 -->
+      <div class="base2" v-if="this.id == 151">
+        <img src="./img/rock-park.webp" alt="">
+        <div class="next">
+          <a @click="mapback1" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+      <!-- ロック八百屋1 -->
+      <div class="base2" v-if="this.id == 152">
+        <img src="./img/rock-market.webp" alt="">
+        <div class="next">
+          <a @click="mapback1" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+      <!-- ロックコンビ二1 -->
+      <div class="base2" v-if="this.id == 153">
+        <img src="./img/rock-store.webp" alt="">
+        <div class="next">
+          <a @click="mapback1" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+
+      <!-- マップ2用 -->
+      <!-- ロック八百屋2 -->
+      <div class="base2" v-if="this.id == 160">
+        <img src="./img/rock-market.webp" alt="">
+        <div class="next">
+          <a @click="mapback2" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+      <!-- クリア家2 -->
+      <div class="base2" v-if="this.id == 161">
+        <img src="./img/clear-house.webp" alt="">
+        <div class="next">
+          <a @click="mapback2" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+      <!-- ロックコンビ二2 -->
+      <div class="base2" v-if="this.id == 162">
+        <img src="./img/rock-store.webp" alt="">
+        <div class="next">
+          <a @click="mapback2" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+      <!-- クリア学校2 -->
+      <div class="base2" v-if="this.id == 163">
+        <img src="./img/clear-school.webp" alt="">
+        <div class="next">
+          <a @click="mapback2" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+
+      <!-- マップ3用 -->
+      <!-- クリア公園3 -->
+      <div class="base2" v-if="this.id == 170">
+        <img src="./img/clear-park.webp" alt="">
+        <div class="next">
+          <a @click="mapback3" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+      <!-- ロック八百屋3 -->
+      <div class="base2" v-if="this.id == 171">
+        <img src="./img/rock-market.webp" alt="">
+        <div class="next">
+          <a @click="mapback3" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+      <!-- クリア家3 -->
+      <div class="base2" v-if="this.id == 172">
+        <img src="./img/clear-house.webp" alt="">
+        <div class="next">
+          <a @click="mapback3" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+      <!-- ロックコンビ二3 -->
+      <div class="base2" v-if="this.id == 173">
+        <img src="./img/rock-store.webp" alt="">
+        <div class="next">
+          <a @click="mapback3" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+      <!-- クリア学校3 -->
+      <div class="base2" v-if="this.id == 174">
+        <img src="./img/clear-school.webp" alt="">
+        <div class="next">
+          <a @click="mapback3" class="next-btn btn-border">マップに戻る</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="footer" style="text-align: right">
+      Copyright © 2020 Yumekawaii All rights reserved.
+    </p>
+  </div>
+  </div>
+
+  <script>
+    // ヒント
+    Vue.component("open-modal", {
+      template: `
           <div id="overlay" v-on:click="clickEvent">
               <div id="content"　 v-on:click="stopEvent">
                 <p><slot></slot></p>
@@ -970,103 +2688,157 @@
               </div>
           </div>
           `,
-        methods: {
-          clickEvent: function () {
-            this.$emit("from-child");
-          },
-          stopEvent: function () {
-            event.stopPropagation();
-          },
+      methods: {
+        clickEvent: function () {
+          this.$emit("from-child");
         },
-      });
-      
-      new Vue({
-        el: "#app",
-        data: {
-          id: 1,
-          showContent: false,
-          answer1: "こんだて",
-          answer2: "おもいで",
-          answer3: "すいどう",
-          answer4: "ほん",
-          input1: "",
-          input2: "",
-          input3: "",
-          input4: "",
+        stopEvent: function () {
+          event.stopPropagation();
         },
-        methods: {
-          click: function () {
+      },
+    });
+
+    new Vue({
+      el: "#app",
+      data: {
+        id: 20,
+        showContent: false,
+        answer1: "こんだて",
+        answer2: "おもいで",
+        answer3: "すいどう",
+        answer4: "ほん",
+        input1: "",
+        input2: "",
+        input3: "",
+        input4: "",
+      },
+      methods: {
+        click: function () {
+          this.id = this.id + 1;
+        },
+        back: function () {
+          this.id = this.id - 1;
+        },
+        story: function () {
+          this.id = 100;
+        },
+        help: function () {
+          this.id = 101;
+        },
+        cont: function () {
+          this.id = 102;
+        },
+        top: function () {
+          this.id = 1;
+        },
+        end: function () {
+          this.id = 200;
+        },
+        nohouse1: function () {
+          this.id = 150;
+        },
+        nopark1: function () {
+          this.id = 151;
+        },
+        noyaoya1: function () {
+          this.id = 152;
+        },
+        nostore1: function () {
+          this.id = 153;
+        },
+        noyaoya2: function () {
+          this.id = 160;
+        },
+        nohouse2: function () {
+          this.id = 161;
+        },
+        nostore2: function () {
+          this.id = 162;
+        },
+        noschool2: function () {
+          this.id = 163;
+        },
+        nopark3: function () {
+          this.id = 170;
+        },
+        noyaoya3: function () {
+          this.id = 171;
+        },
+        nohouse3: function () {
+          this.id = 172;
+        },
+        nostore3: function () {
+          this.id = 173;
+        },
+        noschool3: function () {
+          this.id = 174;
+        },
+        mapback1: function () {
+          this.id = 5;
+        },
+        mapback2: function () {
+          this.id = 11;
+        },
+        mapback3: function () {
+          this.id = 18;
+        },
+        openModal: function () {
+          this.showContent = true;
+        },
+        closeModal: function () {
+          this.showContent = false;
+        },
+      },
+      watch: {
+        // 謎1
+        input1: function () {
+          const judgment = this.input1.indexOf(this.answer1);
+          if (judgment >= 0) {
             this.id = this.id + 1;
-          },
-          back: function () {
-            this.id = this.id - 1;
-          },
-          story: function () {
-            this.id = 100;
-          },
-          help: function () {
-            this.id = 101;
-          },
-          cont: function () {
-            this.id = 102;
-          },
-          top: function () {
-            this.id = 1;
-          },
-          openModal: function () {
-            this.showContent = true;
-          },
-          closeModal: function () {
-            this.showContent = false;
-          },
+          } else {
+            alert("「" + this.input1 + "」不正解！もう一回挑戦。");
+          };
         },
-        watch: {
-          // 謎1
-          input1: function () {
-            const judgment = this.input1.indexOf(this.answer1);
-            if (judgment >= 0) {
-              this.id = this.id + 1;
-            } else {
-              alert("「" + this.input1 + "」不正解！もう一回挑戦。");
-            };
-          },
-          // 謎２
-          input2: function () {
-            const judgment = this.input2.indexOf(this.answer2);
-            if (judgment >= 0) {
-              this.id = this.id + 1;
-            } else {
-              alert("「" + this.input2 + "」不正解！もう一回挑戦。");
-            };
-          },
-          // 謎３
-          input3: function () {
-            const judgment = this.input3.indexOf(this.answer3);
-            if (judgment >= 0) {
-              this.id = this.id + 1;
-            } else {
-              alert("「" + this.input3 + "」不正解！もう一回挑戦。");
-            };
-          },
-          // 謎４
-          input4: function () {
-            const judgment = this.input4.indexOf(this.answer4);
-            if (judgment >= 0) {
-              this.id = this.id + 1;
-            } else {
-              alert("「" + this.input4 + "」不正解！もう一回挑戦。");
-            };
-          },
+        // 謎２
+        input2: function () {
+          const judgment = this.input2.indexOf(this.answer2);
+          if (judgment >= 0) {
+            this.id = this.id + 1;
+          } else {
+            alert("「" + this.input2 + "」不正解！もう一回挑戦。");
+          };
         },
-      });
-    </script>
-    <script>$( '.js-input' ).keyup(function() {
-      if( $(this).val() ) {
-         $(this).addClass('not-empty');
+        // 謎３
+        input3: function () {
+          const judgment = this.input3.indexOf(this.answer3);
+          if (judgment >= 0) {
+            this.id = this.id + 1;
+          } else {
+            alert("「" + this.input3 + "」不正解！もう一回挑戦。");
+          };
+        },
+        // 謎４
+        input4: function () {
+          const judgment = this.input4.indexOf(this.answer4);
+          if (judgment >= 0) {
+            this.id = this.id + 1;
+          } else {
+            alert("「" + this.input4 + "」不正解！もう一回挑戦。");
+          };
+        },
+      },
+    });
+  </script>
+  <script>
+    $('.js-input').keyup(function () {
+      if ($(this).val()) {
+        $(this).addClass('not-empty');
       } else {
-         $(this).removeClass('not-empty');
+        $(this).removeClass('not-empty');
       }
-    });</script>
-  
-  </body>
+    });
+  </script>
+
+</body>
+
 </html>
