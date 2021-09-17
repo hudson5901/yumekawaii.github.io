@@ -642,19 +642,19 @@
 
     .color3 {
       background-color: yellow;
-      opacity: 0.1;
+      opacity: 0;
       cursor: pointer;
     }
 
     .color4 {
       background-color: green;
-      opacity: 0.1;
+      opacity: 0;
       cursor: pointer;
     }
 
     .color5 {
       background-color: aqua;
-      opacity: 0.1;
+      opacity: 0;
       cursor: pointer;
     }
   </style>
@@ -981,6 +981,7 @@
 
         <!--　学校内 -->
         <div class="base2" v-if="this.id == 6">
+          <audio src="./sound/ひとりにしないで.mp3" preload="metadata" autoplay loop></audio>
           <h1>学校の校舎内</h1>
           <div class="map-div">
             <div class="map-back">
@@ -1213,7 +1214,7 @@
         <div class="base2" v-if="this.id == 7">
           <div class="video">
             <iframe width="100%" height="500px"
-              src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+              src="https://www.youtube.com/embed/LsRBt0q51xk?rel=0&autoplay=1&playsinline=1&loop=1&playlist=LsRBt0q51xk&controls=0&disablekb=1"
               frameborder="0" allow="accelerometer; autoplay;
                   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -1224,6 +1225,7 @@
 
         <!-- 給食室内 -->
         <div class="base2" v-if="this.id == 8">
+          <audio src="./sound/コーヒーの昼下がり.mp3" preload="metadata" autoplay loop></audio>
           <h1>給食室</h1>
           <div class="map-div">
             <div class="map-back">
@@ -1481,6 +1483,7 @@
 
         <!-- マップ2 -->
         <div class="base2" v-if="this.id == 11">
+          <audio src="./sound/不穏な影.mp3" preload="metadata" autoplay loop></audio>
           <h1>欠けたマップ</h1>
           <div class="map-div">
             <div class="map-back">
@@ -1714,7 +1717,7 @@
         <div class="base2" v-if="this.id == 12">
           <div class="video">
             <iframe width="100%" height="500px"
-              src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+              src="https://www.youtube.com/embed/TdXcpXuxUNc?rel=0&autoplay=1&playsinline=1&loop=1&playlist=TdXcpXuxUNc&controls=0&disablekb=1"
               frameborder="0" allow="accelerometer; autoplay;
                   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -1749,6 +1752,7 @@
         </div>
         <!-- 公園内 -->
         <div class="base2" v-if="this.id == 15">
+          <audio src="./sound/魔王魂  民族29.mp3" preload="metadata" autoplay loop></audio>
           <h1>ここは公園</h1>
           <div class="map-div">
             <div class="map-back">
@@ -1997,6 +2001,7 @@
 
         <!--　新マップ -->
         <div class="base2" v-if="this.id == 18">
+          <audio src="./sound/不穏な影.mp3" preload="metadata" autoplay loop></audio>
           <h1>完成マップ</h1>
           <div class="map-div">
             <div class="map-back">
@@ -2230,7 +2235,7 @@
         <div class="base2" v-if="this.id == 19">
           <div class="video">
             <iframe width="100%" height="500px"
-              src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+              src="https://www.youtube.com/embed/JVPDvnPbiIY?rel=0&autoplay=1&playsinline=1&loop=1&playlist=JVPDvnPbiIY&controls=0&disablekb=1"
               frameborder="0" allow="accelerometer; autoplay;
                   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -2241,6 +2246,7 @@
 
         <!--　図書館内 -->
         <div class="base2" v-if="this.id == 20">
+          <audio src="./sound/えも.m4a" preload="metadata" autoplay loop></audio>
           <h1>ここは図書館</h1>
           <div class="map-div">
             <div class="map-back">
@@ -2498,7 +2504,7 @@
         <div class="base2" v-if="this.id == 23">
           <div class="video">
             <iframe width="100%" height="500px"
-              src="https://www.youtube.com/embed/ix14Qu161cI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=ix14Qu161cI&controls=0&disablekb=1"
+              src="https://www.youtube.com/embed/73JNrw6HcRI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=73JNrw6HcRI&controls=0&disablekb=1"
               frameborder="0" allow="accelerometer; autoplay;
                   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -2509,26 +2515,32 @@
 
         <!--　謎5 -->
         <div class="base2" v-if="this.id == 24">
-          <p>ここで謎５</p>
-          <a @click="click" class="next-btn btn-border">次へ</a>
+          <audio src="./sound/迷いの森.mp3" preload="metadata" autoplay loop></audio>
+          <img src="./img/nazostep5-1.webp" alt="">
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">食べ残しをしない
+            </a>
+          </div>        
         </div>
 
         <!--　正解画面謎5 -->
         <div class="base2" v-if="this.id == 25">
-          <audio src="./sound/異端審問.mp3" preload="metadata" autoplay loop></audio>
+          <audio src="./sound/wonder_land.mp3" preload="metadata" autoplay loop></audio>
           <div class="clear1">
             <div>
               <h1>正解</h1>
-              <h2>答えは、？？？</h2>
+              <p>答えは、「食べ残しをしない」</p>
             </div>
           </div>
           <div class="next">
-            <a @click="click" class="next-btn btn-border">図書館を出る</a>
+            <a @click="click" class="next-btn btn-border">次へ
+            </a>
           </div>
         </div>
 
         <!--　新ロケットマップ -->
         <div class="base2" v-if="this.id == 26">
+          <audio src="./sound/I_will_dance_to_your_music.mp3" preload="metadata" autoplay loop></audio>
          <img src="./img/roket.webp" alt="">
           <div class="next">
             <a @click="click" class="next-btn btn-border">ロケットに乗る</a>
@@ -2568,14 +2580,21 @@
 
       <!-- 終わり -->
       <div class="base3" v-if="this.id == 200">
-        <a href="./img/map-library.webp" download>終了証明書を発行する</a>
-        <a href="">感想フォーム</a>
-        <a href="">はじめの画面に戻る</a>
+        <div class="next">
+          <a href="https://forms.gle/kwUzCzPxMwuAo1Ws6" class="next-btn btn-border">感想フォーム</a>
+        </div>
+        <div class="next">
+          <a href="./img/map-library.webp" download class="next-btn btn-border">終了証明書を発行する</a>
+        </div>
+        <div class="next">
+          <a href="" class="next-btn btn-border">はじめの画面に戻る</a>
+        </div>
       </div>
 
       <!-- マップ１用 -->
       <!-- クリア家1 -->
       <div class="base2" v-if="this.id == 150">
+        <audio src="./sound/警告音2.mp3" preload="metadata" autoplay loop></audio>
         <img src="./img/clear-house.webp" alt="">
         <div class="next">
           <a @click="mapback1" class="next-btn btn-border">マップに戻る</a>
@@ -2590,6 +2609,7 @@
       </div>
       <!-- ロック八百屋1 -->
       <div class="base2" v-if="this.id == 152">
+        <audio src="./sound/警告音2.mp3" preload="metadata" autoplay loop></audio>
         <img src="./img/rock-market.webp" alt="">
         <div class="next">
           <a @click="mapback1" class="next-btn btn-border">マップに戻る</a>
@@ -2597,6 +2617,7 @@
       </div>
       <!-- ロックコンビ二1 -->
       <div class="base2" v-if="this.id == 153">
+        <audio src="./sound/警告音2.mp3" preload="metadata" autoplay loop></audio>
         <img src="./img/rock-store.webp" alt="">
         <div class="next">
           <a @click="mapback1" class="next-btn btn-border">マップに戻る</a>
@@ -2606,6 +2627,7 @@
       <!-- マップ2用 -->
       <!-- ロック八百屋2 -->
       <div class="base2" v-if="this.id == 160">
+        <audio src="./sound/警告音2.mp3" preload="metadata" autoplay loop></audio>
         <img src="./img/rock-market.webp" alt="">
         <div class="next">
           <a @click="mapback2" class="next-btn btn-border">マップに戻る</a>
@@ -2613,6 +2635,7 @@
       </div>
       <!-- クリア家2 -->
       <div class="base2" v-if="this.id == 161">
+        <audio src="./sound/警告音2.mp3" preload="metadata" autoplay loop></audio>
         <img src="./img/clear-house.webp" alt="">
         <div class="next">
           <a @click="mapback2" class="next-btn btn-border">マップに戻る</a>
@@ -2620,6 +2643,7 @@
       </div>
       <!-- ロックコンビ二2 -->
       <div class="base2" v-if="this.id == 162">
+        <audio src="./sound/警告音2.mp3" preload="metadata" autoplay loop></audio>
         <img src="./img/rock-store.webp" alt="">
         <div class="next">
           <a @click="mapback2" class="next-btn btn-border">マップに戻る</a>
@@ -2627,6 +2651,7 @@
       </div>
       <!-- クリア学校2 -->
       <div class="base2" v-if="this.id == 163">
+        <audio src="./sound/警告音2.mp3" preload="metadata" autoplay loop></audio>
         <img src="./img/clear-school.webp" alt="">
         <div class="next">
           <a @click="mapback2" class="next-btn btn-border">マップに戻る</a>
@@ -2636,6 +2661,7 @@
       <!-- マップ3用 -->
       <!-- クリア公園3 -->
       <div class="base2" v-if="this.id == 170">
+        <audio src="./sound/警告音2.mp3" preload="metadata" autoplay loop></audio>
         <img src="./img/clear-park.webp" alt="">
         <div class="next">
           <a @click="mapback3" class="next-btn btn-border">マップに戻る</a>
@@ -2643,6 +2669,7 @@
       </div>
       <!-- ロック八百屋3 -->
       <div class="base2" v-if="this.id == 171">
+        <audio src="./sound/警告音2.mp3" preload="metadata" autoplay loop></audio>
         <img src="./img/rock-market.webp" alt="">
         <div class="next">
           <a @click="mapback3" class="next-btn btn-border">マップに戻る</a>
@@ -2650,6 +2677,7 @@
       </div>
       <!-- クリア家3 -->
       <div class="base2" v-if="this.id == 172">
+        <audio src="./sound/警告音2.mp3" preload="metadata" autoplay loop></audio>
         <img src="./img/clear-house.webp" alt="">
         <div class="next">
           <a @click="mapback3" class="next-btn btn-border">マップに戻る</a>
@@ -2657,6 +2685,7 @@
       </div>
       <!-- ロックコンビ二3 -->
       <div class="base2" v-if="this.id == 173">
+        <audio src="./sound/警告音2.mp3" preload="metadata" autoplay loop></audio>
         <img src="./img/rock-store.webp" alt="">
         <div class="next">
           <a @click="mapback3" class="next-btn btn-border">マップに戻る</a>
@@ -2664,6 +2693,7 @@
       </div>
       <!-- クリア学校3 -->
       <div class="base2" v-if="this.id == 174">
+        <audio src="./sound/警告音2.mp3" preload="metadata" autoplay loop></audio>
         <img src="./img/clear-school.webp" alt="">
         <div class="next">
           <a @click="mapback3" class="next-btn btn-border">マップに戻る</a>
@@ -2701,7 +2731,7 @@
     new Vue({
       el: "#app",
       data: {
-        id: 20,
+        id: 1,
         showContent: false,
         answer1: "こんだて",
         answer2: "おもいで",
