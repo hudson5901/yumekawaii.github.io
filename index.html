@@ -657,12 +657,17 @@
       opacity: 0;
       cursor: pointer;
     }
+    @media screen and (max-width: 630px){
+.none {display:none}
+}
+
   </style>
 </head>
 <link rel="stylesheet" href="./css/a.css" />
 
 <body>
-  <div id="app">
+  <h1 class="none"></h1>
+  <div id="app" class="none">
     <!-- 背景動作　-->
     <div class="firefly"></div>
     <div class="firefly"></div>
@@ -2002,7 +2007,7 @@
         <!--　新マップ -->
         <div class="base2" v-if="this.id == 18">
           <audio src="./sound/不穏な影.mp3" preload="metadata" autoplay loop></audio>
-          <h1>完成マップ</h1>
+          <h1>マップ</h1>
           <div class="map-div">
             <div class="map-back">
               <img src="./img/map2.webp" alt="">
@@ -2483,7 +2488,7 @@
           <button v-on:click="openModal">ヒントを見る</button>
           <open-modal v-show="showContent" v-on:from-child="closeModal"><img src="./img/step4tips.webp" alt="">
           </open-modal>
-          <input v-model.lazy="input4" 　maxlength="2" placeholder="ひらがなで答えを入力"></input>
+          <input v-model.lazy="input4" 　maxlength="4" placeholder="ひらがなで答えを入力"></input>
         </div>
 
         <!--　正解画面謎4 -->
@@ -2492,7 +2497,7 @@
           <div class="clear1">
             <div>
               <h1>正解</h1>
-              <p>答えは、「ほん」</p>
+              <p>答えは、「うけつけ」</p>
             </div>
           </div>
           <div class="next">
@@ -2581,13 +2586,13 @@
       <!-- 終わり -->
       <div class="base3" v-if="this.id == 200">
         <div class="next">
-          <a href="https://forms.gle/kwUzCzPxMwuAo1Ws6" class="next-btn btn-border">感想フォーム</a>
+          <a　target="_blank" href="https://forms.gle/kwUzCzPxMwuAo1Ws6" class="next-btn btn-border">感想フォーム</a>
         </div>
         <div class="next">
-          <a href="./img/map-library.webp" download class="next-btn btn-border">終了証明書を発行する</a>
+          <a　target="_blank" href="./img/修了証明書.pdf" download class="next-btn btn-border">終了証明書を発行する</a>
         </div>
         <div class="next">
-          <a href="" class="next-btn btn-border">はじめの画面に戻る</a>
+          <a　target="_blank" href="" class="next-btn btn-border">はじめの画面に戻る</a>
         </div>
       </div>
 
@@ -2736,7 +2741,7 @@
         answer1: "こんだて",
         answer2: "おもいで",
         answer3: "すいどう",
-        answer4: "ほん",
+        answer4: "うけつけ",
         input1: "",
         input2: "",
         input3: "",
