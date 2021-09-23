@@ -187,7 +187,6 @@
 
     .base1 {
       text-align: center;
-      margin: 300px 0;
     }
 
     .base1 h1 {
@@ -199,11 +198,14 @@
     .base1 h2 {
       margin: 20px 0;
       letter-spacing: 10px;
+      font-size: 40px;
     }
 
     .base1 a {
       color: black;
       margin: 20px 0;
+      font-size: 20px;
+
     }
 
     .base1 button {
@@ -706,16 +708,16 @@
           <!-- スタート画面 -->
           <div class="base1" v-if="this.id == 1">
             <audio src="./sound/プロジェクト ゴースト -.m4a" preload="metadata" autoplay loop></audio>
-            <h1>Escape From Earth</h1>
-            <h2>地球からの脱出</h2>
-            <a @click="click" class="cta" href="#"> Start </a>
+            <img style="width: 90%;" src="./img/yumekawaii-top.png" alt="">
+            <h2></h2>
+            <a @click="click" class="cta" href="#">　 ゲームを始める　</a>
           </div>
 
           <!-- 導入１ -->
           <div class="base2" v-if="this.id == 2">
             <div class="video">
               <iframe width="100%" height="500px"
-                src="https://www.youtube.com/embed/28PCRFCPrwc?rel=0&autoplay=1&playsinline=1&loop=1&playlist=28PCRFCPrwc&controls=0&disablekb=1"
+                src="https://www.youtube.com/embed/xM9yyYBKCmA?rel=0&autoplay=1&playsinline=1&loop=1&playlist=xM9yyYBKCmA&controls=0&disablekb=1"
                 frameborder="0" allow="accelerometer; autoplay;
                   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -1219,7 +1221,7 @@
         <div class="base2" v-if="this.id == 7">
           <div class="video">
             <iframe width="100%" height="500px"
-              src="https://www.youtube.com/embed/LsRBt0q51xk?rel=0&autoplay=1&playsinline=1&loop=1&playlist=LsRBt0q51xk&controls=0&disablekb=1"
+              src="https://www.youtube.com/embed/N5EBq13mFrk?rel=0&autoplay=1&playsinline=1&loop=1&playlist=N5EBq13mFrk&controls=0&disablekb=1"
               frameborder="0" allow="accelerometer; autoplay;
                   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -1722,7 +1724,7 @@
         <div class="base2" v-if="this.id == 12">
           <div class="video">
             <iframe width="100%" height="500px"
-              src="https://www.youtube.com/embed/TdXcpXuxUNc?rel=0&autoplay=1&playsinline=1&loop=1&playlist=TdXcpXuxUNc&controls=0&disablekb=1"
+              src="https://www.youtube.com/embed/PfgmKUuo-ig?rel=0&autoplay=1&playsinline=1&loop=1&playlist=PfgmKUuo-ig&controls=0&disablekb=1"
               frameborder="0" allow="accelerometer; autoplay;
                   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -2240,7 +2242,7 @@
         <div class="base2" v-if="this.id == 19">
           <div class="video">
             <iframe width="100%" height="500px"
-              src="https://www.youtube.com/embed/JVPDvnPbiIY?rel=0&autoplay=1&playsinline=1&loop=1&playlist=JVPDvnPbiIY&controls=0&disablekb=1"
+              src="https://www.youtube.com/embed/noVNMqrxgKg?rel=0&autoplay=1&playsinline=1&loop=1&playlist=noVNMqrxgKg&controls=0&disablekb=1"
               frameborder="0" allow="accelerometer; autoplay;
                   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -2250,7 +2252,7 @@
         </div>
 
         <!--　図書館内 -->
-        <div class="base2" v-if="this.id == 20">
+        <div class="base2" v-if="this.id == 22">
           <audio src="./sound/えも.m4a" preload="metadata" autoplay loop></audio>
           <h1>ここは図書館</h1>
           <div class="map-div">
@@ -2481,7 +2483,7 @@
         </div>
 
         <!--　謎4 -->
-        <div class="base2" v-if="this.id == 21">
+        <div class="base2" v-if="this.id == 20">
           <img src="./img/nazostep4.webp" alt="" />
           <audio src="./sound/迷いの森.mp3" preload="metadata" autoplay loop></audio>
           <!-- ヒント謎4 -->
@@ -2492,7 +2494,7 @@
         </div>
 
         <!--　正解画面謎4 -->
-        <div class="base2" v-if="this.id == 22">
+        <div class="base2" v-if="this.id == 21">
           <audio src="./sound/異端審問.mp3" preload="metadata" autoplay loop></audio>
           <div class="clear1">
             <div>
@@ -2505,11 +2507,19 @@
           </div>
         </div>
 
-        <!--　本をもらう動画 -->
+        <!--　図書館を出てロケットへ -->
         <div class="base2" v-if="this.id == 23">
+         <img src="./img/stop.png" alt="">
+          <div class="next">
+            <a @click="click" class="next-btn btn-border">宇宙船へ向かう</a>
+          </div>
+        </div>
+
+        <!--　新ロケットマップ -->
+        <div class="base2" v-if="this.id == 24">
           <div class="video">
             <iframe width="100%" height="500px"
-              src="https://www.youtube.com/embed/73JNrw6HcRI?rel=0&autoplay=1&playsinline=1&loop=1&playlist=73JNrw6HcRI&controls=0&disablekb=1"
+              src="https://www.youtube.com/embed/e0VfMB-q8Mw?rel=0&autoplay=1&playsinline=1&loop=1&playlist=e0VfMB-q8Mw&controls=0&disablekb=1"
               frameborder="0" allow="accelerometer; autoplay;
                   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -2518,42 +2528,37 @@
           </div>
         </div>
 
-        <!--　謎5 -->
-        <div class="base2" v-if="this.id == 24">
-          <audio src="./sound/迷いの森.mp3" preload="metadata" autoplay loop></audio>
-          <img src="./img/nazostep5-1.webp" alt="">
-          <div class="next">
-            <a @click="click" class="next-btn btn-border">食べ残しをしない
-            </a>
-          </div>        
-        </div>
+                <!--　謎5 -->
+                <div class="base2" v-if="this.id == 25">
+                  <audio src="./sound/迷いの森.mp3" preload="metadata" autoplay loop></audio>
+                  <img src="./img/nazostep5-1.webp" alt="">
+                  <div class="next">
+                    <a @click="click" class="next-btn btn-border">食べ残しをしない
+                    </a>
+                  </div>        
+                </div>
+                               <!--　謎5 -->
+                               <div class="base2" v-if="this.id == 26">
+                                <audio src="./sound/迷いの森.mp3" preload="metadata" autoplay loop></audio>
+                                <img src="./img/nazostep5-2.webp" alt="">
+                                <div class="next">
+                                  <a @click="click" class="next-btn btn-border">ポイ捨てをしない
+                                  </a>
+                                </div>        
+                              </div>
+                                             <!--　謎5 -->
+                <div class="base2" v-if="this.id == 27">
+                  <audio src="./sound/迷いの森.mp3" preload="metadata" autoplay loop></audio>
+                  <img src="./img/nazostep5-3.webp" alt="">
+                  <div class="next">
+                    <a @click="click" class="next-btn btn-border">着た服をリサイクルする
+                    </a>
+                  </div>        
+                </div>
 
-        <!--　正解画面謎5 -->
-        <div class="base2" v-if="this.id == 25">
-          <audio src="./sound/wonder_land.mp3" preload="metadata" autoplay loop></audio>
-          <div class="clear1">
-            <div>
-              <h1>正解</h1>
-              <p>答えは、「食べ残しをしない」</p>
-            </div>
-          </div>
-          <div class="next">
-            <a @click="click" class="next-btn btn-border">次へ
-            </a>
-          </div>
-        </div>
-
-        <!--　新ロケットマップ -->
-        <div class="base2" v-if="this.id == 26">
-          <audio src="./sound/I_will_dance_to_your_music.mp3" preload="metadata" autoplay loop></audio>
-         <img src="./img/roket.webp" alt="">
-          <div class="next">
-            <a @click="click" class="next-btn btn-border">ロケットに乗る</a>
-          </div>
-        </div>
 
         <!--　end画面 -->
-        <div class="base2" v-if="this.id == 27">
+        <div class="base2" v-if="this.id == 28">
           <div class="video">
             <iframe width="100%" height="500px"
               src="https://www.youtube.com/embed/4f2PJKdriqA?rel=0&autoplay=1&playsinline=1&loop=1&playlist=4f2PJKdriqA&controls=0&disablekb=1"
@@ -2589,7 +2594,7 @@
           <a　target="_blank" href="https://forms.gle/kwUzCzPxMwuAo1Ws6" class="next-btn btn-border">感想フォーム</a>
         </div>
         <div class="next">
-          <a　target="_blank" href="./img/修了証明書.pdf" download class="next-btn btn-border">終了証明書を発行する</a>
+          <a　target="_blank" href="./img/yumekawaii-修了証-1,2.pdf" download class="next-btn btn-border">終了証明書を発行する</a>
         </div>
         <div class="next">
           <a　target="_blank" href="" class="next-btn btn-border">はじめの画面に戻る</a>
